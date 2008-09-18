@@ -1,0 +1,13 @@
+h1 Toolbox
+
+Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript. It provides standard tools that can be included in various projects, like loggers, converters, database abstractions...
+
+h2 Current content
+* FancyLog
+	a wrapper for the standard ruby logger
+* JQueryDoubleMetaphone
+
+h2 Todos
+* PHP Logger
+* Database abstraction in ruby and php
+* javascript utilies (mainly jQuery plugins)
