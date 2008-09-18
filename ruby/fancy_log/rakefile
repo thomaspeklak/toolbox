@@ -1,0 +1,11 @@
+
+desc "Performing all tests"
+task :test do
+	load 'test/tc_fancy_log.rb'
+end
+
+desc "no default"
+task :default do
+	puts "available tasks:"
+	puts "	test  # test FfancyLog"
+end
