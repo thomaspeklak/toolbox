@@ -1,0 +1,15 @@
+$: << File.expand_path(File.dirname(__FILE__)+'/tests')
+
+desc 'perform all tests'
+task :tests do
+  load 'tc_emerald.rb'
+end
+
+desc 'Usage:'
+task :default do
+  puts <<-EOLS
+possible tasks:
+  tests  : perform all tests in project
+
+  EOLS
+end

@@ -1,0 +1,5 @@
+#!/usr/local/bin/ruby -w
+
+require 'emerald.rb'
+
+Emerald.new
