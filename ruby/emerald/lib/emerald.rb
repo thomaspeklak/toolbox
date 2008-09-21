@@ -34,18 +34,18 @@ class Emerald
         create_read_me
         create_rakefile
         create_gemspec
-#        initialize_git  if ARGV.inclde?('+git')
+        initialize_git  if ARGV.include?('+git')
       end
     else
       init_gemname_vars
       unless gem_dir_exists
-        create_bin      if ARGV.inclde?('bin')
-        create_lib      if ARGV.inclde?('lib')
-        create_tests    if ARGV.inclde?('tests')
+        create_bin      if ARGV.include?('bin')
+        create_lib      if ARGV.include?('lib')
+        create_tests    if ARGV.include?('tests')
         create_read_me
-        create_rakefile if ARGV.inclde?('tests')
+        create_rakefile if ARGV.include?('tests')
         create_gemspec
-#        initialize_git  if ARGV.inclde?('+git')
+        initialize_git  if ARGV.include?('+git')
       end
     end
   end
