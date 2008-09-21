@@ -2,7 +2,7 @@ $basename = File.dirname(File.expand_path(__FILE__))
 $out = $basename + '/out.log'
 $err = $basename + '/err.log'
 require 'test/unit'
-require File.join($basename, '..', 'lib', 'fancy_log')
+require File.join($basename, '..', 'lib', 'fancylog')
 
 class TestFancyLog < Test::Unit::TestCase
 	def test_fancy_log
