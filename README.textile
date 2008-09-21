@@ -6,6 +6,8 @@ Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript.
 * FancyLog
 	a wrapper for the standard ruby logger
 * JQueryDoubleMetaphone
+* Emerald
+	creates a gem default directory structure
 
 *ToDos*
 * PHP Logger
