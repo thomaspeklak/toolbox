@@ -3,9 +3,18 @@
 Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript. It provides standard tools that can be included in various projects, like loggers, converters, database abstractions...
 
 *Current content*
+* jQueryDoubleMetaphone
+	the DoubleMetaphone algorithm in javascript/jQuery
+* jQueryLiveQuery
+	filter a list of items
+* jQueryPositionIndicator
+	indicate position in a long html document
+* jQuerySuggest
+	suggest entries in a search field with a fixed term list
+* jQueryTextHighlight
+	highlight terms in HTML document
 * FancyLog
 	a wrapper for the standard ruby logger
-* JQueryDoubleMetaphone
 * Emerald
 	creates a gem default directory structure
 
