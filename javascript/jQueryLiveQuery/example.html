@@ -1,0 +1,264 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>LiveQuery Example</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script src="http://jquery.com/src/jquery-latest.pack.js" type="text/javascript"></script>
+	<script src="jQueryLiveQuery.js" type="text/javascript"></script>
+	<script src="LiveQueryExample.js" type="text/javascript"></script>
+	<style type='text/css'>
+		body{font:normal 12px sans-serif}
+		.hide{display:none}
+		#spinner{display:none;vertical-align:center}
+	
+	</style>
+</head>
+<body>
+<div id='filterForm'><strong>Filter:</strong> <input id='filter' /> <img id='spinner' src='ajax-loader.gif' alt=''/></div>
+	<ul>
+		<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+		<li>Donec tincidunt quam sit amet velit pellentesque convallis.</li>
+		<li>Mauris commodo scelerisque nisi.</li>
+		<li>Duis rutrum blandit magna.</li>
+		<li>Praesent mollis velit eget nibh.</li>
+		<li>Suspendisse ultrices nulla eu sapien.</li>
+		<li>Quisque facilisis risus non sem.</li>
+		<li>Vivamus eu orci sed nibh rhoncus fermentum.</li>
+		<li>Nulla id justo vitae nibh mollis tincidunt.</li>
+		<li>Nunc congue magna a dolor.</li>
+		<li>Praesent ac sem quis magna porta rhoncus.</li>
+		<li>Ut ac leo sed dui ultricies blandit.</li>
+		<li>In elementum ullamcorper lectus.</li>
+		<li>Phasellus congue turpis sit amet quam.</li>
+		<li>Nullam eget turpis sit amet purus ornare ullamcorper.</li>
+		<li>Curabitur a magna eget purus vehicula aliquam.</li>
+		<li>Morbi tempor risus a enim facilisis condimentum.</li>
+		<li>Suspendisse aliquet sagittis nisl.</li>
+		<li>Fusce ornare posuere nulla.</li>
+		<li>Proin varius magna vel tortor.</li>
+		<li>Ut posuere augue eget nunc.</li>
+		<li>Mauris malesuada blandit dolor.</li>
+		<li>Curabitur placerat orci a sem.</li>
+		<li>Donec vulputate mauris vel ante.</li>
+		<li>Vivamus vitae massa eu erat vehicula porttitor.</li>
+		<li>Proin molestie leo id nibh.</li>
+		<li>Donec elementum magna nec ligula.</li>
+		<li>Nam pretium neque quis sapien.</li>
+		<li>Duis in arcu quis felis malesuada faucibus.</li>
+		<li>Praesent aliquam lorem vel metus.</li>
+		<li>Nunc sodales pede et leo.</li>
+		<li>Nunc id lacus vitae elit laoreet semper.</li>
+		<li>Aenean tristique lectus nec leo.</li>
+		<li>Mauris at nulla at pede imperdiet imperdiet.</li>
+		<li>Aenean ultricies eros tincidunt sapien.</li>
+		<li>In vel nunc quis nibh cursus gravida.</li>
+		<li>In vel ante eget diam consectetuer lobortis.</li>
+		<li>Sed laoreet arcu ut lacus.</li>
+		<li>Quisque quis risus ac orci egestas placerat.</li>
+		<li>Morbi id magna et turpis consectetuer faucibus.</li>
+		<li>Curabitur facilisis quam non velit.</li>
+		<li>Sed feugiat rhoncus elit.</li>
+		<li>Fusce pharetra ultricies ipsum.</li>
+		<li>Mauris laoreet tincidunt nibh.</li>
+		<li>Nunc interdum eros et dui.</li>
+		<li>Nunc commodo ultricies massa.</li>
+		<li>Praesent molestie augue eget dolor.</li>
+		<li>Suspendisse laoreet diam eu justo.</li>
+		<li>Mauris laoreet lectus porta massa.</li>
+		<li>Fusce scelerisque nibh quis tellus.</li>
+		<li>Nunc tempus enim ut purus.</li>
+		<li>Curabitur ullamcorper elit in lacus.</li>
+		<li>In vitae neque sed sem dapibus pulvinar.</li>
+		<li>Nam imperdiet vehicula mi.</li>
+		<li>Duis a odio ac quam rutrum pretium.</li>
+		<li>Etiam facilisis vestibulum ipsum.</li>
+		<li>Ut suscipit blandit orci.</li>
+		<li>Quisque volutpat ante vitae quam.</li>
+		<li>Donec eu magna id elit sodales porttitor.</li>
+		<li>Nam dignissim accumsan nisl.</li>
+		<li>Nunc tincidunt leo eu sem sagittis lobortis.</li>
+		<li>Donec vitae turpis non lectus commodo consequat.</li>
+		<li>Vivamus et metus id neque volutpat auctor.</li>
+		<li>Praesent sit amet orci interdum elit posuere pretium.</li>
+		<li>Curabitur suscipit aliquet metus.</li>
+		<li>Cras vitae felis eu erat tempus accumsan.</li>
+		<li>Vestibulum vehicula velit eget leo.</li>
+		<li>Nam consectetuer accumsan nisl.</li>
+		<li>Vestibulum iaculis purus non orci.</li>
+		<li>Quisque molestie mauris posuere augue.</li>
+		<li>Pellentesque varius quam vitae tortor.</li>
+		<li>Maecenas a mauris ac nisi congue pretium.</li>
+		<li>Aenean tempor tristique augue.</li>
+		<li>Praesent vel massa in turpis imperdiet sollicitudin.</li>
+		<li>Ut pharetra lectus eu mi.</li>
+		<li>Morbi hendrerit luctus quam.</li>
+		<li>Duis ornare pellentesque libero.</li>
+		<li>Cras laoreet pellentesque turpis.</li>
+		<li>Nam eget orci ac dolor malesuada aliquet.</li>
+		<li>Nunc non orci in dolor lobortis rhoncus.</li>
+		<li>Morbi ultrices malesuada diam.</li>
+		<li>Nulla blandit aliquam arcu.</li>
+		<li>Donec iaculis volutpat tellus.</li>
+		<li>Phasellus posuere dignissim urna.</li>
+		<li>Nullam auctor libero quis odio.</li>
+		<li>Fusce vel ante vitae justo sagittis dapibus.</li>
+		<li>Vivamus scelerisque dignissim lorem.</li>
+		<li>Nam ultrices massa eu libero.</li>
+		<li>Proin semper faucibus sem.</li>
+		<li>Vestibulum dapibus convallis nunc.</li>
+		<li>Vivamus et tellus ut sapien dignissim sodales.</li>
+		<li>Curabitur sollicitudin ligula sed ante.</li>
+		<li>Fusce ullamcorper convallis odio.</li>
+		<li>Fusce ullamcorper mauris a justo.</li>
+		<li>Aenean in tellus quis mi pellentesque dignissim.</li>
+		<li>Proin blandit commodo lacus.</li>
+		<li>Sed nec diam eget nunc consectetuer venenatis.</li>
+		<li>Suspendisse pharetra orci eget nisl.</li>
+		<li>Sed placerat augue eget neque.</li>
+		<li>Phasellus quis leo vitae sem rhoncus laoreet.</li>
+		<li>Nullam vel dolor quis erat cursus sollicitudin.</li>
+		<li>Sed ac odio sed metus feugiat molestie.</li>
+		<li>Quisque viverra fringilla sapien.</li>
+		<li>Maecenas quis enim sed nisi condimentum iaculis.</li>
+		<li>Donec non orci sit amet ligula dapibus mollis.</li>
+		<li>Praesent tempus bibendum nunc.</li>
+		<li>Donec convallis elit ultrices risus.</li>
+		<li>Vivamus tincidunt fringilla urna.</li>
+		<li>Maecenas vel mi semper arcu tincidunt vestibulum.</li>
+		<li>Aliquam feugiat mauris eget erat.</li>
+		<li>Integer semper tempus nisl.</li>
+		<li>Nulla pharetra ornare eros.</li>
+		<li>Vivamus ornare ultrices odio.</li>
+		<li>Quisque suscipit quam non ipsum.</li>
+		<li>Ut vestibulum sagittis mi.</li>
+		<li>Ut tempor aliquet elit.</li>
+		<li>Proin semper commodo tortor.</li>
+		<li>Nam ut turpis vel est vestibulum pharetra.</li>
+		<li>Curabitur rutrum pharetra justo.</li>
+		<li>Pellentesque mollis sagittis pede.</li>
+		<li>Ut tempor adipiscing enim.</li>
+		<li>Duis fringilla dignissim turpis.</li>
+		<li>Nunc dapibus eros et mi.</li>
+		<li>Maecenas ac arcu ut orci adipiscing blandit.</li>
+		<li>Nunc id erat non felis luctus aliquet.</li>
+		<li>Fusce vestibulum facilisis lorem.</li>
+		<li>Nunc commodo tortor eu enim.</li>
+		<li>Sed fermentum velit id justo.</li>
+		<li>Morbi bibendum diam ut lorem.</li>
+		<li>Curabitur gravida mollis sapien.</li>
+		<li>Vestibulum malesuada pretium enim.</li>
+		<li>Pellentesque quis mi eu justo posuere pellentesque.</li>
+		<li>In varius lobortis mauris.</li>
+		<li>Mauris rutrum pellentesque felis.</li>
+		<li>In et nunc sed dui ultrices pellentesque.</li>
+		<li>Maecenas auctor convallis nisl.</li>
+		<li>Morbi eleifend erat eget arcu.</li>
+		<li>In venenatis mi sed arcu.</li>
+		<li>Integer eu nibh semper dolor accumsan sagittis.</li>
+		<li>In egestas scelerisque arcu.</li>
+		<li>Etiam lobortis hendrerit mi.</li>
+		<li>Donec id massa in est porttitor imperdiet.</li>
+		<li>Praesent ac leo quis sem aliquet tristique.</li>
+		<li>Phasellus consectetuer bibendum velit.</li>
+		<li>Cras mollis sagittis erat.</li>
+		<li>Sed nec pede ut dolor hendrerit ultricies.</li>
+		<li>Nullam imperdiet lectus et elit euismod pharetra.</li>
+		<li>Pellentesque quis libero ac elit vulputate ornare.</li>
+		<li>Donec hendrerit libero nec arcu.</li>
+		<li>Fusce pellentesque risus in ligula.</li>
+		<li>Vestibulum quis libero a quam rutrum vulputate.</li>
+		<li>Integer sagittis tincidunt diam.</li>
+		<li>Integer ac lectus et neque luctus placerat.</li>
+		<li>Duis tincidunt nunc vitae eros vestibulum vestibulum.</li>
+		<li>In eu sem sed mi volutpat gravida.</li>
+		<li>Fusce quis mauris nec arcu ornare pulvinar.</li>
+		<li>Donec eu lectus ultricies tellus iaculis vulputate.</li>
+		<li>Vestibulum placerat est ac enim.</li>
+		<li>Curabitur sagittis justo eu lorem.</li>
+		<li>Aliquam rutrum magna quis mi.</li>
+		<li>Pellentesque nec tellus eget est vestibulum facilisis.</li>
+		<li>Praesent condimentum quam ut tortor.</li>
+		<li>Cras non nisl sed lectus dignissim venenatis.</li>
+		<li>Nullam hendrerit quam ut quam.</li>
+		<li>Nam ut tellus sed nibh ornare blandit.</li>
+		<li>Pellentesque blandit tincidunt sapien.</li>
+		<li>Integer mollis ante eget nunc.</li>
+		<li>Proin varius nisl non velit.</li>
+		<li>Integer tempor luctus dolor.</li>
+		<li>Nulla eu augue malesuada velit euismod scelerisque.</li>
+		<li>Morbi sollicitudin malesuada dolor.</li>
+		<li>Donec vel metus vel libero aliquet luctus.</li>
+		<li>Sed accumsan metus in dolor.</li>
+		<li>Suspendisse dictum felis vel mauris.</li>
+		<li>Duis nec mi a leo tristique mollis.</li>
+		<li>Sed hendrerit auctor eros.</li>
+		<li>Ut vehicula nisl id orci.</li>
+		<li>Nullam consequat turpis interdum tellus.</li>
+		<li>Duis tempor enim eu ipsum.</li>
+		<li>Pellentesque dictum tellus quis lacus lacinia luctus.</li>
+		<li>Suspendisse ut turpis consectetuer quam sollicitudin blandit.</li>
+		<li>Nulla sit amet diam et tortor ultrices aliquam.</li>
+		<li>Nunc sodales dictum enim.</li>
+		<li>Morbi ultrices diam eget sem.</li>
+		<li>Etiam consectetuer tellus vulputate nunc.</li>
+		<li>Ut euismod sem ullamcorper neque.</li>
+		<li>Duis placerat porta ipsum.</li>
+		<li>Aliquam sed risus nec mi hendrerit malesuada.</li>
+		<li>Donec sodales massa pulvinar odio iaculis pellentesque.</li>
+		<li>Sed porttitor accumsan mauris.</li>
+		<li>Aliquam at ipsum quis leo tincidunt volutpat.</li>
+		<li>Sed adipiscing volutpat leo.</li>
+		<li>Praesent varius tincidunt lectus.</li>
+		<li>Cras vestibulum leo non libero.</li>
+		<li>Fusce sollicitudin sollicitudin ligula.</li>
+		<li>Aenean tristique tortor in enim.</li>
+		<li>Praesent id orci aliquam dolor viverra gravida.</li>
+		<li>Vivamus sed nulla et ipsum rhoncus hendrerit.</li>
+		<li>Mauris mattis iaculis erat.</li>
+		<li>Sed fermentum aliquet arcu.</li>
+		<li>Morbi ac nulla feugiat enim sollicitudin vestibulum.</li>
+		<li>Cras dignissim fermentum nibh.</li>
+		<li>Vivamus a felis vitae felis molestie malesuada.</li>
+		<li>Sed nec magna vitae neque dapibus porttitor.</li>
+		<li>Fusce porttitor nunc a urna.</li>
+		<li>In pharetra fringilla eros.</li>
+		<li>Praesent sagittis ipsum ac quam.</li>
+		<li>Donec at dui a mauris varius dignissim.</li>
+		<li>Praesent malesuada fringilla tellus.</li>
+		<li>Vestibulum facilisis fringilla enim.</li>
+		<li>Morbi eu augue et eros tincidunt tristique.</li>
+		<li>Etiam convallis augue pulvinar risus.</li>
+		<li>Sed iaculis velit in justo.</li>
+		<li>Integer luctus facilisis nibh.</li>
+		<li>Duis dapibus auctor felis.</li>
+		<li>Pellentesque semper massa quis eros.</li>
+		<li>Nulla in risus a felis fermentum egestas.</li>
+		<li>Suspendisse suscipit consectetuer dolor.</li>
+		<li>Suspendisse feugiat suscipit est.</li>
+		<li>Vivamus bibendum mi vitae magna.</li>
+		<li>Fusce dignissim est quis lectus.</li>
+		<li>Mauris blandit sapien vel mauris.</li>
+		<li>Cras ac libero quis ipsum placerat malesuada.</li>
+		<li>Morbi vel turpis id quam pulvinar convallis.</li>
+		<li>Mauris sit amet nulla vel turpis sodales accumsan.</li>
+		<li>Aliquam mattis urna eu quam.</li>
+		<li>Nunc adipiscing tempor augue.</li>
+		<li>Sed vestibulum urna id orci.</li>
+		<li>Aliquam aliquam dapibus dui.</li>
+		<li>Morbi quis augue sed risus feugiat sodales.</li>
+		<li>Vivamus pretium gravida lorem.</li>
+		<li>Vivamus pellentesque sodales elit.</li>
+		<li>Donec condimentum consequat odio.</li>
+		<li>Vivamus ultricies nunc eu turpis.</li>
+		<li>Pellentesque egestas suscipit lacus.</li>
+		<li>Mauris sollicitudin nunc in nibh.</li>
+		<li>Praesent et mauris gravida eros ultricies suscipit.</li>
+		<li>Nam sed nulla id felis porttitor luctus.</li>
+		<li>Integer scelerisque molestie nibh.</li>
+		<li>Morbi quis eros vel magna imperdiet cursus.</li>
+		<li>Sed pharetra est a turpis.</li>
+	</ul>
+</body>
+</html>
