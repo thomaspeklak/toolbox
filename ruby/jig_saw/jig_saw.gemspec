@@ -17,9 +17,7 @@ JigSaw
 
 Usage:
   EOS
-  s.files = Dir["{bin,lib,tests}/**/*"]
-	s.bindir = 'bin'
-	s.executable = 'jig_saw'
+  s.files = Dir["{lib,tests}/**/*"]
   s.require_path = "lib"
   s.has_rdoc = true
   s.add_dependency = ""
