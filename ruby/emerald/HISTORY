@@ -1,4 +1,7 @@
 _______________________
+release 0.0.3
+* changed rakefile to new more generic layout
+_______________________
 release 0.0.2
 * fixed typo in emerald.rb
 _______________________

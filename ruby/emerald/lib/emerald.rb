@@ -134,20 +134,60 @@ Usage:
   def create_rakefile
     File.open("#{@gem_filename}/rakefile",'w') do |f|
       f.puts <<-EOS
-$: << File.expand_path(File.dirname(__FILE__)+'/tests')
+require 'rake'
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'rake/gempackagetask'
+require 'rake/clean'
+require 'rubygems'
 
-desc 'perform all tests'
-task :tests do
-  load 'tc_#{@gem_filename}.rb'
+load File.dirname(__FILE__) + "/#{@gem_filename}.gemspec"
+
+CLEAN.include("pkg")
+
+desc 'create gem package'
+Rake::GemPackageTask.new($spec) do |pkg|
+	Rake::Task[:clean].invoke
+	pkg.need_tar = true
 end
 
-desc 'Usage:'
-task :default do
-  puts <<EOLS
-possible tasks:
-  tests  : perform all tests in project
+desc 'perform tests'
+Rake::TestTask.new(:test) do |t|
+   t.test_files = FileList['tests/tc_*.rb']
+   t.warning = true
+end 
 
+desc 'generate development rdocs'
+Rake::RDocTask.new(:rdoc_dev) do |rd|
+	rd.title = "#{@gemname} development API"
+	rd.main = "README"
+	rd.rdoc_files.include("README", "lib/**/*.rb")
+	rd.rdoc_dir = 'docs_dev'
+	rd.options << "--all"
+end
+
+desc 'generate rdocs'
+Rake::RDocTask.new(:rdoc) do |rd|
+	rd.title = "#{@gemname} API"
+	rd.main = "README"
+	rd.rdoc_files.include("README", "lib/**/*.rb")
+	rd.rdoc_dir = 'docs'
+end
+
+task :default do
+  puts <<-EOLS
+tasks:
+ TESTS
+  rake test                           # run tests normally
+  rake test TEST=just_one_file.rb     # run just one test file.
+  rake test TESTOPTS="-v"             # run in verbose mode
+ DOCS
+  rake rdoc_dev                       # generate development rdocs
+  rake rdoc                           # generate rdocs
+ GEMS
+  rake gem                            # create gem in pkg dir
   EOLS
+end		
       EOS
     end    
   end
@@ -155,7 +195,7 @@ possible tasks:
   def create_gemspec
     File.open("#{@gem_filename}/#{@gem_filename}.gemspec",'w') do |f|
       f.puts <<-EOS
-Gem::Specification.new do |s| 
+$spec = Gem::Specification.new do |s| 
   s.name = "#{@gem_filename.downcase}"
   s.version = "0.0.1"
   s.author = ""

@@ -1,6 +1,6 @@
-Gem::Specification.new do |s| 
+$spec = Gem::Specification.new do |s| 
   s.name = "emerald"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.author = "Thomas Peklak"
   s.email = "thomas.peklak@gmail.com"
   s.platform = Gem::Platform::RUBY
