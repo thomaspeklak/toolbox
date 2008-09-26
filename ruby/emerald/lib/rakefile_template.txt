@@ -4,7 +4,7 @@ require 'rake/testtask'
 require 'rake/gempackagetask'
 require 'rubygems'
 
-load File.dirname(__FILE__) + '/emerald.gemspec'
+load File.dirname(__FILE__) + '/%%GEMNAME_FILENAME%%.gemspec'
 
 desc 'create gem package'
 task :gem => [:clear_packages]
@@ -21,18 +21,18 @@ end
 
 desc 'generate development rdocs'
 Rake::RDocTask.new(:rdoc_dev) do |rd|
-	rd.title = 'Emerald development API'
+	rd.title = '%%GEMNAME%% development API'
 	rd.main = "README"
-	rd.rdoc_files.include("README", "lib/**/*")
+	rd.rdoc_files.include("README", "lib/**/*.rb")
 	rd.rdoc_dir = 'docs_dev'
 	rd.options << "--all"
 end
 
 desc 'generate rdocs'
 Rake::RDocTask.new(:rdoc) do |rd|
-	rd.title = 'Emerald API'
+	rd.title = '%%GEMNAME%% API'
 	rd.main = "README"
-	rd.rdoc_files.include("README", "lib/**/*")
+	rd.rdoc_files.include("README", "lib/**/*.rb")
 	rd.rdoc_dir = 'docs'
 end
 

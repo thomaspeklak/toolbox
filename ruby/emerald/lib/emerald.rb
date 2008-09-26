@@ -132,63 +132,9 @@ Usage:
   end
   
   def create_rakefile
+    rakefile = File.read(File.dirname(__FILE__) + '/rakefile_template.txt')
     File.open("#{@gem_filename}/rakefile",'w') do |f|
-      f.puts <<-EOS
-require 'rake'
-require 'rake/rdoctask'
-require 'rake/testtask'
-require 'rake/gempackagetask'
-require 'rake/clean'
-require 'rubygems'
-
-load File.dirname(__FILE__) + "/#{@gem_filename}.gemspec"
-
-CLEAN.include("pkg")
-
-desc 'create gem package'
-Rake::GemPackageTask.new($spec) do |pkg|
-	Rake::Task[:clean].invoke
-	pkg.need_tar = true
-end
-
-desc 'perform tests'
-Rake::TestTask.new(:test) do |t|
-   t.test_files = FileList['tests/tc_*.rb']
-   t.warning = true
-end 
-
-desc 'generate development rdocs'
-Rake::RDocTask.new(:rdoc_dev) do |rd|
-	rd.title = "#{@gemname} development API"
-	rd.main = "README"
-	rd.rdoc_files.include("README", "lib/**/*.rb")
-	rd.rdoc_dir = 'docs_dev'
-	rd.options << "--all"
-end
-
-desc 'generate rdocs'
-Rake::RDocTask.new(:rdoc) do |rd|
-	rd.title = "#{@gemname} API"
-	rd.main = "README"
-	rd.rdoc_files.include("README", "lib/**/*.rb")
-	rd.rdoc_dir = 'docs'
-end
-
-task :default do
-  puts <<-EOLS
-tasks:
- TESTS
-  rake test                           # run tests normally
-  rake test TEST=just_one_file.rb     # run just one test file.
-  rake test TESTOPTS="-v"             # run in verbose mode
- DOCS
-  rake rdoc_dev                       # generate development rdocs
-  rake rdoc                           # generate rdocs
- GEMS
-  rake gem                            # create gem in pkg dir
-  EOLS
-end		
-      EOS
+      f.puts rakefile.gsub('%%GEMNAME%%',@gemname).gsub('%%GEMNAME_FILENAME%%',@gem_filename)
     end    
   end
   

@@ -1,4 +1,4 @@
-Emerald
+=Emerald
 
 Emerald creates a bare directory structure for a gem, the default structure is. If any options are specified only the specified directory structures are created
   [gemname]
@@ -18,3 +18,26 @@ Usage:
 Options:
   bin, lib, tests: creates directories for bin, lib, tests
   +git: performs a git init on main directory, this is not done by default
+
+==Rakefile
+The rakefile provides tasks for
+  Tasks:                                                                         
+    rake class n=Klass                  # generate class with test               
+   GEMS                                                                          
+    rake clear_packages                 # clear packages                         
+    rake clobber_package                # Remove package products                
+    rake clobber_rdoc                   # Remove rdoc products                   
+    rake clobber_rdoc_dev               # Remove rdoc products                   
+    rake gem                            # create gem package / Build the gem file
+    rake package                        # Build all the packages                 
+   DOCS                                                                          
+    rake rdoc                           # Build the rdoc HTML Files              
+    rake rdoc_dev                       # Build the rdoc_dev HTML Files          
+    rake repackage                      # Force a rebuild of the package files   
+    rake rerdoc                         # Force a rebuild of the RDOC files      
+    rake rerdoc_dev                     # Force a rebuild of the RDOC files      
+    rake gem                            # create gem in pkg dir                  
+   TESTS                                                                         
+    rake test                           # run tests normally                     
+    rake test TEST=just_one_file.rb     # run just one test file.                
+    rake test TESTOPTS="-v"             # run in verbose mode                    
