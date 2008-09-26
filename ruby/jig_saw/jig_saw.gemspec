@@ -1,4 +1,4 @@
-Gem::Specification.new do |s| 
+$spec = Gem::Specification.new do |s| 
   s.name = "jig_saw"
   s.version = "0.0.1"
   s.author = "Thomas Peklak"
@@ -20,7 +20,6 @@ Usage:
   s.files = Dir["{lib,tests}/**/*"]
   s.require_path = "lib"
   s.has_rdoc = true
-  s.add_dependency = ""
   s.extra_rdoc_files = ["README"] 
   s.rdoc_options = %w{--main README}
 end

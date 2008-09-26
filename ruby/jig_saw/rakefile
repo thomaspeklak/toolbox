@@ -1,14 +1,116 @@
-$: << File.expand_path(File.dirname(__FILE__)+'/tests')
+require 'rake'
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'rake/gempackagetask'
+require 'rubygems'
 
-desc 'perform all tests'
-task :tests do
-  load 'tc_jig_saw.rb'
+load File.dirname(__FILE__) + '/jig_saw.gemspec'
+
+desc 'create gem package'
+task :gem => [:clear_packages]
+Rake::GemPackageTask.new($spec) do |pkg|
+	pkg.need_tar = true
 end
 
-desc 'Usage:'
-task :default do
-  puts <<EOLS
-possible tasks:
-  tests  : perform all tests in project
 
+desc 'perform tests'
+Rake::TestTask.new(:test) do |t|
+   t.test_files = FileList['tests/tc_*.rb']
+   t.warning = true
+end 
+
+desc 'generate development rdocs'
+Rake::RDocTask.new(:rdoc_dev) do |rd|
+	rd.title = 'JigSaw development API'
+	rd.main = "README"
+	rd.rdoc_files.include("README", "lib/**/*.rb")
+	rd.rdoc_dir = 'docs_dev'
+	rd.options << "--all"
+end
+
+desc 'generate rdocs'
+Rake::RDocTask.new(:rdoc) do |rd|
+	rd.title = 'JigSaw API'
+	rd.main = "README"
+	rd.rdoc_files.include("README", "lib/**/*.rb")
+	rd.rdoc_dir = 'docs'
+end
+
+desc 'generate class with test'
+task :class do
+	if ENV['n'] && ENV['n'].to_s.length > 0
+		generate_class(ENV['n'])
+	else
+		puts 'Please provide a name with "rake class n=Klass"'
+	end
+end
+
+desc 'clear packages'
+task :clear_packages do
+	rm_rf 'pkg'
+end
+
+task :default do
+  puts <<-EOLS
+tasks:
+ TESTS
+  rake test                           # run tests normally
+  rake test TEST=just_one_file.rb     # run just one test file.
+  rake test TESTOPTS="-v"             # run in verbose mode
+ DOCS
+  rake rdoc_dev                       # generate development rdocs
+  rake rdoc                           # generate rdocs
+ GEMS
+  rake gem                            # create gem in pkg dir
   EOLS
+end
+
+def generate_class(name)
+	if name.include?('/')
+		namespace =  name.split('/')[0..-2].join('/') + '/'
+		name = name.split('/')[-1]
+	else
+		namespace = ''
+	end
+	name.capitailze! unless name.match(/^[A-Z]/)
+	filename = name.gsub(/(.)([A-Z])/,'\1_\2').downcase
+	mkdir_p 'lib/' + namespace.downcase  unless File.exists?('lib/' + namespace.downcase)
+	
+	File.open("lib/#{namespace.downcase}#{filename}.rb",'w') do |f|
+		f.puts <<-EOS
+# Class #{name}
+
+
+class #{name}
+	def initialize
+	
+	end
+end
+		EOS
+	end
+	
+	mkdir 'tests' unless File.exists?('tests')
+	File.open("tests/tc_#{filename.downcase}.rb",'w') do |f|
+	      f.puts <<-EOS
+#Test for #{name}
+$: << File.expand_path(File.dirname(__FILE__)+'/../lib/#{namespace.downcase}')
+
+require 'test/unit' 
+require '#{filename}.rb'
+
+class #{name}Test < Test::Unit::TestCase 
+  def setup
+
+  end
+
+  def test_#{filename}
+
+  end
+
+  def teardown
+
+  end
+end
+	      EOS
+	end
+end
