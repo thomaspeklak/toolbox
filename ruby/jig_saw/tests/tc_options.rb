@@ -15,23 +15,29 @@ class OptionsTest < Test::Unit::TestCase
     assert_equal :value, @options.option
     assert_equal [:option], @options.get_options
   end
-   
+  
   def test_benchmark
-    10_000.times {|i|
-      @options.i = i
-      t = @options.i
-      assert_equal i, t}
+    1000.times do |i|
+      a = "bm#{i}"
+      @options.send("#{a}=",i)
+      t = @options.send(a)
+      assert_equal i, t
+    end
   end
+  
   
   def test_suboptions
-    
+    @options.option_with.suboption = 100
+    assert_equal 100, @options.option_with.suboption
   end
   
-  def test_immutable
+  def test_zzz_immutable  #immutable has to be called last therefor the zzz
+    @options.option2
     @options.set_immutable
-    assert_raises NoMethodError do
+    assert_raises JigSaw::Options::NoOptionsEntry do
       @options.new_option
     end
+    assert_equal nil, @options.option2
   end
   
   def teardown

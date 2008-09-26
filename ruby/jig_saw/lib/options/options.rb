@@ -14,8 +14,21 @@ class Options
   
   def set_immutable
     self.class.class_eval do
-      remove_method :method_missing
+      define_method :method_missing do |meth, *args|
+        raise NoOptionsEntry, "no option #{meth} defined"
+      end
     end
+    set_unset_values_to_nil
+  end
+  
+  #TODO Iterator over tree
+  def each
+  
+  end
+  
+  #TODO Tree to_hash
+  def to_hash
+    
   end
   
   private
@@ -30,15 +43,26 @@ class Options
       __send__(meth, *args)
     end
   end
+  def set_unset_values_to_nil
+    @stored_options.each do |o|
+      if __send__(o).class == JigSaw::Options::Options
+        if __send__(o).get_options.empty?
+          __send__("#{o}=", nil)
+        else
+          __send__(o).set_immutable
+        end
+      end
+    end
+  end
+  
 end
 
 class MainOptions < Options
   include Singleton
-  def set_immutable
-    self.class.superclass.class_eval do
-      remove_method :method_missing
-    end
-  end
+end
+
+class NoOptionsEntry < Exception
+
 end
 
 end
