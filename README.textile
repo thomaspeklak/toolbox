@@ -17,6 +17,8 @@ Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript.
 	- suggest entries in a search field with a fixed term list
 * jQueryTextHighlight
 	- highlight terms in HTML document
+* jQueryPluginTemplate
+	- template for jQuery plugin development
 * Emerald
 	- creates a gem default directory structure
 * FancyLog
