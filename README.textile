@@ -23,7 +23,10 @@ Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript.
 	- a wrapper for the standard ruby logger
 * JigSaw
   - an all in one config/options handler | currently under development (see jig_saw branch)
-
+* MVC_autoload
+  - basic class autoload algorithm for a MVC architecture
+	
+	
 *ToDos*
 * PHP Logger
 * Database abstraction in ruby and php
