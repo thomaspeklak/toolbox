@@ -52,8 +52,8 @@ class Emerald
   
   private
   def init_gemname_vars
-    @gemname = ARGV.shift
-    @gemname.capitailze! unless @gemname.match(/^[A-Z]/)
+    gemname = ARGV.shift
+    @gemname = gemname.capitalize unless gemname.match(/^[A-Z]/)
     @gem_filename = @gemname.gsub(/(.)([A-Z])/,'\1_\2').downcase
   end
   

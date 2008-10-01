@@ -1,4 +1,7 @@
 _______________________
+release 0.0.5
+* fixed a problem in initialization
+_______________________
 release 0.0.4
 + added more raketasks
 	- gem creation
