@@ -154,7 +154,7 @@ $spec = Gem::Specification.new do |s|
 	s.executable = '#{@gem_filename}'
   s.require_path = "lib"
   s.has_rdoc = true
-  s.add_dependency = ""
+  s.add_dependency()
   s.extra_rdoc_files = ["README"] 
   s.rdoc_options = %w{--main README}
 end
