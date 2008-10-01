@@ -167,7 +167,7 @@ end
   
   def initialize_git
     Dir.chdir(@gem_filename)
-    #`git init`
+    `git init`
   end
   
   def create_dir(dir)
