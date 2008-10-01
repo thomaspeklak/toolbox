@@ -27,7 +27,8 @@ Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript.
   - an all in one config/options handler | currently under development (see jig_saw branch)
 * MVC_autoload
   - basic class autoload algorithm for a MVC architecture
-	
+* Textile2html
+	- a command line wrapper for RedCloth to convert textile files to html	
 	
 *ToDos*
 * PHP Logger

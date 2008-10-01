@@ -1,0 +1,21 @@
+#!/usr/local/bin/ruby -w
+
+if ARGV.size > 0
+	require 'redcloth'
+	ARGV.each do |f|
+		if File.exists? f
+			File.open(f.gsub('.textile','') + '.html','w') do |file|
+				file.puts RedCloth.new(File.read(f)).to_html
+			end
+		else
+			puts "File #{f} does not exist"
+		end
+	end
+else
+	puts <<-EOS
+Usage:
+	textile2html file [,file, ...]
+	textile2html pattern
+	EOS
+end
+      
