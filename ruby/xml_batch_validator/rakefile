@@ -1,0 +1,126 @@
+require 'rake'
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'rake/gempackagetask'
+require 'rubygems'
+
+load File.dirname(__FILE__) + '/xml_batch_validator.gemspec'
+
+desc 'create gem package'
+task :gem => [:clear_packages]
+Rake::GemPackageTask.new($spec) do |pkg|
+	pkg.need_tar = true
+end
+
+
+desc 'perform tests'
+Rake::TestTask.new(:test) do |t|
+   t.test_files = FileList['tests/tc_*.rb']
+   t.warning = true
+end 
+
+desc 'generate development rdocs'
+Rake::RDocTask.new(:rdoc_dev) do |rd|
+	rd.title = 'XmlBatchValidator development API'
+	rd.main = "README"
+	rd.rdoc_files.include("README", "lib/**/*.rb")
+	rd.rdoc_dir = 'docs_dev'
+	rd.options << "--all"
+end
+
+desc 'generate rdocs'
+Rake::RDocTask.new(:rdoc) do |rd|
+	rd.title = 'XmlBatchValidator API'
+	rd.main = "README"
+	rd.rdoc_files.include("README", "lib/**/*.rb")
+	rd.rdoc_dir = 'docs'
+end
+
+desc 'generate class with test'
+task :class do
+	if ENV['n'] && ENV['n'].to_s.length > 0
+		generate_class(ENV['n'])
+	else
+		puts 'Please provide a name with "rake class n=Klass"'
+	end
+end
+
+desc 'clear packages'
+task :clear_packages do
+	rm_rf 'pkg'
+end
+
+task :default do
+  puts <<-EOLS
+Tasks:
+	rake class n=Klass                  # generate class with test                          
+ GEMS                                                                                     
+	rake clear_packages                 # clear packages                                    
+	rake clobber_package                # Remove package products                           
+	rake clobber_rdoc                   # Remove rdoc products                              
+	rake clobber_rdoc_dev               # Remove rdoc products                              
+	rake gem                            # create gem package / Build the gem file           
+	rake package                        # Build all the packages                            
+ DOCS                                                                                     
+	rake rdoc                           # Build the rdoc HTML Files                         
+	rake rdoc_dev                       # Build the rdoc_dev HTML Files                     
+	rake repackage                      # Force a rebuild of the package files              
+	rake rerdoc                         # Force a rebuild of the RDOC files                 
+	rake rerdoc_dev                     # Force a rebuild of the RDOC files
+  rake gem                            # create gem in pkg dir
+ TESTS
+  rake test                           # run tests normally
+  rake test TEST=just_one_file.rb     # run just one test file.
+  rake test TESTOPTS="-v"             # run in verbose mode
+  EOLS
+end
+
+def generate_class(name)
+	if name.include?('/')
+		namespace =  name.split('/')[0..-2].join('/') + '/'
+		name = name.split('/')[-1]
+	else
+		namespace = ''
+	end
+	name.capitailze! unless name.match(/^[A-Z]/)
+	filename = name.gsub(/(.)([A-Z])/,'\1_\2').downcase
+	mkdir_p 'lib/' + namespace.downcase  unless File.exists?('lib/' + namespace.downcase)
+	
+	File.open("lib/#{namespace.downcase}#{filename}.rb",'w') do |f|
+		f.puts <<-EOS
+# Class #{name}
+
+
+class #{name}
+	def initialize
+	
+	end
+end
+		EOS
+	end
+	
+	mkdir 'tests' unless File.exists?('tests')
+	File.open("tests/tc_#{filename.downcase}.rb",'w') do |f|
+	      f.puts <<-EOS
+#Test for #{name}
+$: << File.expand_path(File.dirname(__FILE__)+'/../lib/#{namespace.downcase}')
+
+require 'test/unit' 
+require '#{filename}.rb'
+
+class #{name}Test < Test::Unit::TestCase 
+  def setup
+
+  end
+
+  def test_#{filename}
+
+  end
+
+  def teardown
+
+  end
+end
+	      EOS
+	end
+end

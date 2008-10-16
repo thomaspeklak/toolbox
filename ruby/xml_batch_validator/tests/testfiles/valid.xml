@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<root_node>
+	<elem1 attr1="val1" attr2="val2"/>
+	<elem2 attr1="val1" attr2="val2"/>
+	<elem3 attr="baz">
+		<elem4/>
+		<elem5>
+			<elem6>Content for element 6</elem6>
+		</elem5>
+	</elem3>
+	<foo>
+		<bar>1</bar>
+		<bar>2</bar>
+		<bar>3</bar>
+		<bar>4</bar>
+		<bar>5</bar>
+		<bar>6</bar>
+		<bar>7</bar>
+		<bar>8</bar>
+		<bar>9</bar>
+		<bar>10</bar>
+	</foo>
+</root_node>

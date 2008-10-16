@@ -1,0 +1,8 @@
+XmlBatchValidator
+
+Description:
+batch validates XML files
+
+Usage:
+	xml_batch_validator PATTERN
+		PATTERN: glob pattern
