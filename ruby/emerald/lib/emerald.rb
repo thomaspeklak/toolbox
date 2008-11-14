@@ -22,7 +22,10 @@ class Emerald
     +git: performs a git init on main directory, this is not done by default
   EOS
   def initialize
-    case ARGV.length
+		git = ARGV.include?('+git')
+		len = ARGV.length
+		len -= 1 if git
+    case len
     when 0
       puts @@USAGE
     when 1
@@ -34,7 +37,7 @@ class Emerald
         create_read_me
         create_rakefile
         create_gemspec
-        initialize_git  if ARGV.include?('+git')
+        initialize_git  if git
       end
     else
       init_gemname_vars
@@ -45,15 +48,15 @@ class Emerald
         create_read_me
         create_rakefile if ARGV.include?('tests')
         create_gemspec
-        initialize_git  if ARGV.include?('+git')
+        initialize_git  if git
       end
     end
   end
   
   private
   def init_gemname_vars
-    @gemname = ARGV.shift
-    @gemname.capitailze! unless @gemname.match(/^[A-Z]/)
+    @gemname = ARGV[0]
+    @gemname = @gemname.capitalize unless @gemname.match(/^[A-Z]/)
     @gem_filename = @gemname.gsub(/(.)([A-Z])/,'\1_\2').downcase
   end
   
@@ -154,7 +157,7 @@ $spec = Gem::Specification.new do |s|
 	s.executable = '#{@gem_filename}'
   s.require_path = "lib"
   s.has_rdoc = true
-  s.add_dependency = ""
+  #s.add_dependency()
   s.extra_rdoc_files = ["README"] 
   s.rdoc_options = %w{--main README}
 end
@@ -164,7 +167,7 @@ end
   
   def initialize_git
     Dir.chdir(@gem_filename)
-    #`git init`
+    `git init`
   end
   
   def create_dir(dir)
