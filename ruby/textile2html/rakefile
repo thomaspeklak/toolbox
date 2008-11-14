@@ -1,0 +1,56 @@
+require 'rake'
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'rake/gempackagetask'
+require 'rubygems'
+
+load File.dirname(__FILE__) + '/textile2html.gemspec'
+
+desc 'create gem package'
+task :gem => [:clear_packages]
+Rake::GemPackageTask.new($spec) do |pkg|
+	pkg.need_tar = true
+end
+
+
+desc 'generate development rdocs'
+Rake::RDocTask.new(:rdoc_dev) do |rd|
+	rd.title = 'textile2html development API'
+	rd.main = "README"
+	rd.rdoc_files.include("README")
+	rd.rdoc_dir = 'docs_dev'
+	rd.options << "--all"
+end
+
+desc 'generate rdocs'
+Rake::RDocTask.new(:rdoc) do |rd|
+	rd.title = 'textile2html API'
+	rd.main = "README"
+	rd.rdoc_files.include("README")
+	rd.rdoc_dir = 'docs'
+end
+
+desc 'clear packages'
+task :clear_packages do
+	rm_rf 'pkg'
+end
+
+task :default do
+  puts <<-EOLS
+Tasks:
+ GEMS                                                                                     
+	rake clear_packages                 # clear packages                                    
+	rake clobber_package                # Remove package products                           
+	rake clobber_rdoc                   # Remove rdoc products                              
+	rake clobber_rdoc_dev               # Remove rdoc products                              
+	rake gem                            # create gem package / Build the gem file           
+	rake package                        # Build all the packages                            
+ DOCS                                                                                     
+	rake rdoc                           # Build the rdoc HTML Files                         
+	rake rdoc_dev                       # Build the rdoc_dev HTML Files                     
+	rake repackage                      # Force a rebuild of the package files              
+	rake rerdoc                         # Force a rebuild of the RDOC files                 
+	rake rerdoc_dev                     # Force a rebuild of the RDOC files
+  rake gem                            # create gem in pkg dir
+  EOLS
+end

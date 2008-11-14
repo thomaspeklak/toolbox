@@ -1,4 +1,10 @@
 _______________________
+release 0.0.6
+* fixed add_dependency - its () not =
+_______________________
+release 0.0.5
+* fixed a problem in initialization
+_______________________
 release 0.0.4
 + added more raketasks
 	- gem creation

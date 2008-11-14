@@ -1,0 +1,8 @@
+Textile2html
+
+Description:
+	Textile2html is just a wrapper for RedCloth to have a command line tool to convert textile markup to html
+
+Usage:
+	textile2html file [,file, ...]
+	textile2html pattern

@@ -4,21 +4,32 @@ Toolbox is a collection of utilities / utility classes in Ruby, PHP, Javascript.
 
 *Current content*
 * jQueryDoubleMetaphone
-	the DoubleMetaphone algorithm in javascript/jQuery
+	- the DoubleMetaphone algorithm in javascript/jQuery
+* jQueryInfoBox
+	- shows an info box for title attributes on matched elements
 * jQueryLiveQuery
-	filter a list of items
+	- filter a list of items
 * jQueryPositionIndicator
-	indicate position in a long html document
+	- indicate position in a long html document
+* jQueryPageStreamer
+	- enables endless page through streaming new content
 * jQuerySuggest
-	suggest entries in a search field with a fixed term list
+	- suggest entries in a search field with a fixed term list
 * jQueryTextHighlight
-	highlight terms in HTML document
-* FancyLog
-	a wrapper for the standard ruby logger
+	- highlight terms in HTML document
+* jQueryPluginTemplate
+	- template for jQuery plugin development
 * Emerald
-	creates a gem default directory structure
-
+	- creates a gem default directory structure
+* FancyLog
+	- a wrapper for the standard ruby logger
+* JigSaw
+  - an all in one config/options handler | currently under development (see jig_saw branch)
+* MVC_autoload
+  - basic class autoload algorithm for a MVC architecture
+* Textile2html
+	- a command line wrapper for RedCloth to convert textile files to html	
+	
 *ToDos*
 * PHP Logger
 * Database abstraction in ruby and php
-* javascript utilies (mainly jQuery plugins)
